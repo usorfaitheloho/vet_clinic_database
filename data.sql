@@ -59,3 +59,12 @@ BEGIN;
 DELETE FROM animals;
 SELECT * FROM animals;
 ROLLBACK;
+
+
+BEGIN;
+DELETE FROM animals WHERE date_of_birth > '01-01-2022';
+SAVEPOINT delete_animals;
+UPDATE animals SET weight_kg = weight_kg * -1;
+ROLLBACK TO delete_animals;
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
+COMMIT;
