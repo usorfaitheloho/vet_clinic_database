@@ -41,3 +41,21 @@ SELECT * FROM animals;
 ROLLBACK;
 
 UPDATE animals SET species = 'digimon' WHERE name like '%mon';
+
+BEGIN;
+
+UPDATE animals
+SET species = 'digimon'
+WHERE name LIKE '%mon%';
+
+UPDATE animals
+SET species = 'pokemon'
+WHERE species IS NULL;
+
+COMMIT;
+
+/* To delete all from tables and restore it back*/
+BEGIN;
+DELETE FROM animals;
+SELECT * FROM animals;
+ROLLBACK;
