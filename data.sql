@@ -33,38 +33,3 @@ VALUES ('Blossom','1998-10-13',3,true,17);
 INSERT INTO animals(name,date_of_birth,escape_attempts,neutered,weight_kg) 
 VALUES ('Ditto','2022-05-14',4,true,22);
 
-BEGIN;
-UPDATE animals SET species = 'unspecified';
-
-SELECT * FROM animals;
-
-ROLLBACK;
-
-UPDATE animals SET species = 'digimon' WHERE name like '%mon';
-
-BEGIN;
-
-UPDATE animals
-SET species = 'digimon'
-WHERE name LIKE '%mon%';
-
-UPDATE animals
-SET species = 'pokemon'
-WHERE species IS NULL;
-
-COMMIT;
-
-/* To delete all from tables and restore it back*/
-BEGIN;
-DELETE FROM animals;
-SELECT * FROM animals;
-ROLLBACK;
-
-
-BEGIN;
-DELETE FROM animals WHERE date_of_birth > '01-01-2022';
-SAVEPOINT delete_animals;
-UPDATE animals SET weight_kg = weight_kg * -1;
-ROLLBACK TO delete_animals;
-UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
-COMMIT;

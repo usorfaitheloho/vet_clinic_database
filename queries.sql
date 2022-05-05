@@ -16,6 +16,42 @@ SELECT * FROM animals WHERE date_of_birth BETWEEN '2016-1-1' AND '2019-12-31';
 
  SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3 ;
 
+ BEGIN;
+UPDATE animals SET species = 'unspecified';
+
+SELECT * FROM animals;
+
+ROLLBACK;
+
+UPDATE animals SET species = 'digimon' WHERE name like '%mon';
+
+BEGIN;
+
+UPDATE animals
+SET species = 'digimon'
+WHERE name LIKE '%mon%';
+
+UPDATE animals
+SET species = 'pokemon'
+WHERE species IS NULL;
+
+COMMIT;
+
+/* To delete all from tables and restore it back*/
+BEGIN;
+DELETE FROM animals;
+SELECT * FROM animals;
+ROLLBACK;
+
+
+BEGIN;
+DELETE FROM animals WHERE date_of_birth > '01-01-2022';
+SAVEPOINT delete_animals;
+UPDATE animals SET weight_kg = weight_kg * -1;
+ROLLBACK TO delete_animals;
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
+COMMIT;
+
  SELECT COUNT(*) FROM animals;
 
  SELECT COUNT(*) FROM animals WHERE escape_attempts = 0;
