@@ -104,4 +104,15 @@ SELECT
   ON owners.id = animals.owner_id 
   WHERE owners.full_name = 'Dean Winchester' AND animals.escape_attempts = 0;
 
+  -- Who owns the most animals
+
+SELECT
+  owners.full_name, 
+  COUNT(animals.name) 
+  FROM owners 
+  JOIN animals 
+  ON owners.id = animals.owner_id 
+  GROUP BY owners.full_name 
+  ORDER BY COUNT DESC LIMIT 1;
+
 
