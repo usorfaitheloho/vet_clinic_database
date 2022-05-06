@@ -52,13 +52,17 @@ ROLLBACK TO delete_animals;
 UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
 COMMIT;
 
- SELECT COUNT(*) FROM animals;
+SELECT COUNT(*) FROM animals;
 
- SELECT COUNT(*) FROM animals WHERE escape_attempts = 0;
+SELECT COUNT(*) FROM animals WHERE escape_attempts = 0;
 
- SELECT AVG(weight_kg) AS average FROM animals;
+SELECT AVG(weight_kg) AS average FROM animals;
 
- SELECT neutered, COUNT(escape_attempts) AS count FROM animals WHERE escape_attempts > 0 GROUP BY neutered;
+SELECT neutered, COUNT(escape_attempts) AS count FROM animals WHERE escape_attempts > 0 GROUP BY neutered;
 SELECT species,MIN(weight_kg),MAX(weight_kg) FROM animals GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth >= '1990-1-1' 
 AND date_of_birth <= '2000-12-31' GROUP BY species; 
+
+
+-- what animals belong to Melody Pond
+SELECT name FROM animals A JOIN owners O ON O.id = A.owner_id WHERE full_name = 'Melody Pond';
