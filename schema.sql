@@ -18,3 +18,17 @@ CREATE TABLE animals (
     age SMALLINT NOT NULL,
     PRIMARY KEY(id)
     );
+
+    CREATE TABLE species (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(100) NOT NULL,
+    PRIMARY KEY(id)
+    );
+
+    ALTER TABLE animals DROP COLUMN species;
+
+    ALTER TABLE animals ADD species_id INTEGER;
+    ALTER TABLE animals ADD FOREIGN KEY (species_id) REFERENCES species (id) ON DELETE CASCADE;
+
+    ALTER TABLE animals ADD owner_id INTEGER;
+    ALTER TABLE animals ADD FOREIGN KEY (owner_id) REFERENCES owners (id) ON DELETE CASCADE;
