@@ -149,3 +149,13 @@ ON vets.id = specialization.vets_id
 LEFT JOIN species 
 ON species.id = specialization.species_id 
 ORDER BY vets.id; 
+
+-- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
+
+SELECT animals.name 
+FROM animals 
+JOIN visits 
+ON animals.id = visits.animal_id 
+JOIN vets 
+ON vets.id = visits.vet_id 
+WHERE vets.name = 'Stephanie Mendez' AND visits.date_of_vist >= '2020-04-1' AND visits.date_of_vist <= '2020-08-30';
