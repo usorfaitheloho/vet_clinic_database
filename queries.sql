@@ -211,3 +211,12 @@ JOIN visits
 ON vets.id = visits.vet_id 
 WHERE specialization.species_id IS NULL 
 GROUP BY vets.name ORDER BY COUNT(vets.name) DESC;
+
+--What specialty should Maisy Smith consider getting? Look for the species she gets the most.
+
+SELECT 
+species.name AS expected_specialty 
+FROM animals JOIN visits ON animals.id = visits.animal_id 
+JOIN vets ON vets.id = visits.vet_id JOIN species ON species.id = animals.species_id 
+WHERE vets.name = 'Maisy Smith' GROUP BY species.name 
+ORDER BY COUNT(DISTINCT animals.name) DESC LIMIT 1;
