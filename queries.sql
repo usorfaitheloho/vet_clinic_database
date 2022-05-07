@@ -171,3 +171,18 @@ JOIN visits
 ON animals.id = visits.animal_id 
 GROUP BY animals.name 
 ORDER BY COUNT DESC LIMIT 1;
+
+
+
+--Who was Maisy Smith's first visit?
+
+SELECT 
+animals.name 
+FROM animals 
+JOIN visits 
+ON animals.id = visits.animal_id 
+JOIN vets 
+ON vets.id = visits.vet_id 
+WHERE vets.name = 'Maisy Smith' 
+ORDER BY visits.date_of_vist 
+DESC LIMIT 1;
