@@ -81,4 +81,10 @@ INSERT INTO owners (full_name,age) VALUES ('Jennifer Orwell', 19);
     ('Maisy Smith',26,'January 17, 2019'),
     ('Stephanie Mendez', 64, 'May 4,1981'),
     ('Jack Harkness',38, 'June 8, 2008');
+
+     INSERT INTO specialization(
+         vet_id, species_id
+         ) 
+        VALUES 
+        (1,1),(3,2),(3,1),(4,2);
     
