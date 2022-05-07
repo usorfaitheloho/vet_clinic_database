@@ -33,4 +33,13 @@ ALTER TABLE animals ADD FOREIGN KEY (species_id) REFERENCES species (id) ON DELE
 ALTER TABLE animals ADD owner_id INTEGER;
 ALTER TABLE animals ADD FOREIGN KEY (owner_id) REFERENCES owners (id) ON DELETE CASCADE;
 
-CREATE TABLE vets(id INT GENERATED ALWAYS AS IDENTITY,NAME VARCHAR(100),AGE INT,date_of_graduation DATE);
+CREATE TABLE vets(
+    id INT GENERATED ALWAYS AS IDENTITY,
+    NAME VARCHAR(100),AGE INT,
+    date_of_graduation DATE
+    );
+
+CREATE TABLE specialization(
+    vet_id INT,
+    species_id INT
+    );
