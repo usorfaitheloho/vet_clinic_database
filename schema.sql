@@ -69,3 +69,9 @@ CREATE TABLE visits(
     date_of_visit DATE,
     FOREIGN KEY(animal_id) REFERENCES animals (id) ON DELETE CASCADE
     );
+
+-- Add foreign key vet_id
+
+ALTER TABLE visits 
+ADD FOREIGN KEY (vet_id) 
+REFERENCES vets (id) ON DELETE CASCADE;
