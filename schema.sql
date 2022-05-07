@@ -36,7 +36,8 @@ ALTER TABLE animals ADD FOREIGN KEY (owner_id) REFERENCES owners (id) ON DELETE 
 CREATE TABLE vets(
     id INT GENERATED ALWAYS AS IDENTITY,
     NAME VARCHAR(100),AGE INT,
-    date_of_graduation DATE
+    date_of_graduation DATE,
+     PRIMARY KEY(id)
     );
 
 CREATE TABLE specialization(
