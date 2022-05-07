@@ -159,3 +159,15 @@ ON animals.id = visits.animal_id
 JOIN vets 
 ON vets.id = visits.vet_id 
 WHERE vets.name = 'Stephanie Mendez' AND visits.date_of_vist >= '2020-04-1' AND visits.date_of_vist <= '2020-08-30';
+
+
+--What animal has the most visits to vets?
+
+SELECT 
+animals.name, 
+COUNT(visits.animal_id) 
+FROM animals 
+JOIN visits 
+ON animals.id = visits.animal_id 
+GROUP BY animals.name 
+ORDER BY COUNT DESC LIMIT 1;
