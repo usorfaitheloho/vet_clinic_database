@@ -79,3 +79,9 @@ REFERENCES vets (id) ON DELETE CASCADE;
 
 -- Add an email column to your owners table
 ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+-- CREATE INDEXES
+
+CREATE INDEX visits_animal_id_indexes ON visits ( animal_id ASC );
+CREATE INDEX visits_vet_id_indexes ON visits ( vet_id ASC );
+CREATE INDEX owners_email_indexes ON owners ( email ASC );
