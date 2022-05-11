@@ -3,6 +3,7 @@
 > This project is about a database for a vet clinic.
 > Create tables for the vet clinic and update them.
 
+![image](ER_diagram.png)
 
 ## Getting Started
 
